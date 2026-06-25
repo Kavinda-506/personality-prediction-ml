@@ -1,6 +1,4 @@
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 import joblib
 import numpy as np
 import warnings
@@ -17,8 +15,8 @@ LABEL_MAP = {0: "Extrovert", 1: "Introvert"}
 
 
 @app.get("/")
-def serve_ui():
-    return FileResponse("static/index.html")
+def health():
+    return {"status": "ok"}
 
 
 @app.post("/predict")
